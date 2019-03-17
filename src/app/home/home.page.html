@@ -1,12 +1,29 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+
+	<ion-text color="dark shade">
+	  <h1>Bart</h1>
+	</ion-text>
+    <ion-thumbnail>
+	  <img src="./../../assets/t1.jpeg">
+	</ion-thumbnail>
+
+	<ion-list>
+	  <ion-item>
+	    <ion-label>Source</ion-label>
+	    <ion-select placeholder="Select One" [(ngModel)]="stationsSelected.source">
+	      <ion-select-option [value]="stationItem" *ngFor="let stationItem of stations.station">{{ stationItem.name }}</ion-select-option>
+	    </ion-select>
+	  </ion-item>
+	  <ion-item>
+	    <ion-label>Destination</ion-label>
+	    <ion-select placeholder="Select One" [(ngModel)]="stationsSelected.destination">
+	      <ion-select-option [value]="stationItem" *ngFor="let stationItem of stations.station">{{ stationItem.name }}</ion-select-option>
+	    </ion-select>
+	  </ion-item>
+	  <ion-button color="secondary shade" expand="block" shape="round">
+		  <ion-ripple-effect></ion-ripple-effect>
+		  Find Trains
+	  </ion-button>
+	</ion-list>
+
 </ion-content>
