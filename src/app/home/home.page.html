@@ -20,7 +20,7 @@
 	      <ion-select-option [value]="stationItem" *ngFor="let stationItem of stations.station">{{ stationItem.name }}</ion-select-option>
 	    </ion-select>
 	  </ion-item>
-	  <ion-button color="secondary shade" expand="block" shape="round">
+	  <ion-button color="secondary shade" expand="block" shape="round" [href]="'/trips/' + stationsSelected.source.abbr + '/' + stationsSelected.destination.abbr" routerDirection="forward">
 		  <ion-ripple-effect></ion-ripple-effect>
 		  Find Trains
 	  </ion-button>

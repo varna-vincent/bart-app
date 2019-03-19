@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HomeService } from './home.service';
+import { TripsPage } from './../trips/trips.page';
 
 @Component({
   selector: 'app-home',
