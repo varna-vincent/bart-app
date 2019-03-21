@@ -17,7 +17,7 @@
 	  <ion-item>
 	    <ion-label>Destination</ion-label>
 	    <ion-select placeholder="Select One" [(ngModel)]="stationsSelected.destination">
-	      <ion-select-option [value]="stationItem" *ngFor="let stationItem of stations.station">{{ stationItem.name }}</ion-select-option>
+	      <ion-select-option [selected]="stationItem.abbr == prevSelectedDest ? true : false" [value]="stationItem" *ngFor="let stationItem of stations.station">{{ stationItem.name }}</ion-select-option>
 	    </ion-select>
 	  </ion-item>
 	  <ion-button color="secondary shade" expand="block" shape="round" [href]="'/trips/' + stationsSelected.source.abbr + '/' + stationsSelected.destination.abbr" routerDirection="forward">

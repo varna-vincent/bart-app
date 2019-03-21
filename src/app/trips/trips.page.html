@@ -11,7 +11,7 @@
 	    <ion-card-subtitle>To:  {{ dest }}</ion-card-subtitle>
 	  </ion-card-header>
 
-	  <ion-card-content>
+	  <ion-card-content *ngIf="station.north_platforms != null">
 	  	<p>Name - {{ station.name }}</p>
 		<p>Abbreviation - {{ station.abbr }}</p>
 		<p class="text-justify">Address - <span>{{ station.address }}, {{ station.city }}, {{ station.county }}, {{ station.state }}, {{ station.zipcode }}</span></p>
