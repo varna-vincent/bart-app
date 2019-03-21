@@ -15,9 +15,13 @@ export class TripsPage implements OnInit {
 
   public stations: any = [];
   public station: any = [];
+  public destn: any = [];
   public schedule: any = [];
 
   intervalId: number;
+
+  public origin: any = { lat: 37.765062, lng: -122.419694 };
+  public destination: any = { lat: 37.803768, lng: -122.271450 };
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, private homeService: HomeService) { }
 
@@ -26,6 +30,10 @@ export class TripsPage implements OnInit {
   	this.source = this.activatedRoute.snapshot.paramMap.get('source');
   	this.dest = this.activatedRoute.snapshot.paramMap.get('dest');
 
+    this.getTrips(); 
+    this.getStationInfo(); 
+    this.getDestStationInfo();
+    
   	this.intervalId = setInterval(() => { 
       this.getTrips(); 
       this.getStationInfo(); 
@@ -39,7 +47,7 @@ export class TripsPage implements OnInit {
       return this.tripsService.getTrips(this.source, this.dest).subscribe((data: {}) => {
         this.schedule = data;
         // this.countdownService.initiateTimer(this.schedule.request.trip[0]['@origTimeMin']);
-        // this.getDirection();
+        this.getDirection();
       })
     }
   }
@@ -52,5 +60,21 @@ export class TripsPage implements OnInit {
         console.log(data);
       })
     }
+  }
+
+  // Get source station info
+  getDestStationInfo() {
+    if(this.dest) {
+      return this.homeService.getStation(this.dest).subscribe((data: {}) => {
+        this.destn = data;
+        console.log(data);
+      })
+    }
+  }
+
+  getDirection() {
+    this.origin = { lat: parseFloat(this.station.gtfs_latitude), lng: parseFloat(this.station.gtfs_longitude) };
+    this.destination = { lat: parseFloat(this.destn.gtfs_latitude), lng: parseFloat(this.destn.gtfs_longitude) };
+    console.log(this.destination);
   }
 }

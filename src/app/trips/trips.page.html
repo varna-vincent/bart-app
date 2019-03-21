@@ -7,13 +7,19 @@
 	<ion-card>
 	  <ion-card-header>
 	    <ion-card-title>Bart Trains</ion-card-title>
-	    <ion-card-subtitle>From: {{ source }}</ion-card-subtitle>
+	    <ion-card-subtitle>From: {{ station.name }}</ion-card-subtitle>
 	    <ion-card-subtitle>To:  {{ dest }}</ion-card-subtitle>
 	  </ion-card-header>
 
 	  <ion-card-content>
-	    Keep close to Nature's heart... and break clear away, once in awhile,
-	    and climb a mountain or spend a week in the woods. Wash your spirit clean.
+	  	<p>Name - {{ station.name }}</p>
+		<p>Abbreviation - {{ station.abbr }}</p>
+		<p class="text-justify">Address - <span>{{ station.address }}, {{ station.city }}, {{ station.county }}, {{ station.state }}, {{ station.zipcode }}</span></p>
+		<p>North Platforms - <span *ngFor="let northPlatform of station.north_platforms.platform" class="pr-2"> {{ northPlatform }} </span></p>
+		<p>North Routes - <span *ngFor="let northRoute of station.north_routes.route" class="pr-2"> {{ northRoute }} </span></p>
+		<p>South Platforms - <span *ngFor="let southPlatform of station.south_platforms.platform" class="pr-2"> {{ southPlatform }} </span></p>
+		<p>South Routes - <span *ngFor="let southRoute of station.south_routes.route" class="pr-2"> {{ southRoute }} </span></p>
+		<p> Directions </p>
 	  </ion-card-content>
 	</ion-card>
 	<ion-content *ngIf="schedule != null && schedule.request != null" >
