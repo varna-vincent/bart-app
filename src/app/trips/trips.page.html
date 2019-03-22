@@ -12,7 +12,7 @@
 
 	  <ion-card-content *ngIf="station.north_platforms != null">
 	  	<p>Name - {{ station.name }}</p>
-		<p class="text-justify">Address - <span>{{ station.address }}, {{ station.city }}, {{ station.county }}, {{ station.state }}, {{ station.zipcode }}</span></p>
+		<p class="text-justify"><span>{{ station.address }}, {{ station.city }}, {{ station.county }}, {{ station.state }}, {{ station.zipcode }}</span></p>
 		<p>North Platforms - <span *ngFor="let northPlatform of station.north_platforms.platform" class="pr-2"> {{ northPlatform }} </span>, South Platforms - <span *ngFor="let southPlatform of station.south_platforms.platform" class="pr-2"> {{ southPlatform }} </span></p>
 		<p>North Routes - <span *ngFor="let northRoute of station.north_routes.route" class="pr-2"> {{ northRoute }} </span></p>
 		<p>South Routes - <span *ngFor="let southRoute of station.south_routes.route" class="pr-2"> {{ southRoute }} </span></p>
