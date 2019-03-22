@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePage } from './home/home.page';
 import { TripsPage } from './trips/trips.page';
-import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,4 +14,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [ HomePage, TripsPage, MapComponent ]
+export const RoutingComponents = [ HomePage, TripsPage ]

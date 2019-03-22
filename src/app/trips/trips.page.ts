@@ -33,12 +33,6 @@ export class TripsPage implements OnInit {
 
   ngOnInit() {
 
-    this.storage.set('prev_selected_source', this.source);
-    this.storage.set('prev_selected_dest', this.dest);
-    this.storage.get('prev_selected_source').then((val) => {
-      console.log('Your age is', val);
-    });
-
   	this.source = this.activatedRoute.snapshot.paramMap.get('source');
   	this.dest = this.activatedRoute.snapshot.paramMap.get('dest');
 
@@ -50,6 +44,9 @@ export class TripsPage implements OnInit {
       this.getTrips(); 
       this.getStationInfo(); 
     }, 30000);
+
+    this.storage.set('prev_selected_source', this.source);
+    this.storage.set('prev_selected_dest', this.dest);
   }
 
   // Get trips list

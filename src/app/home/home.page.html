@@ -6,7 +6,10 @@
     <ion-thumbnail>
 	  <img src="./../../assets/t1.jpeg">
 	</ion-thumbnail>
-
+	<div>
+	  	<p>Previously Selected Source: {{ prevSelectedSource }}</p>
+	  	<p>Previously Selected Destination: {{ prevSelectedDest }}</p>
+  	</div>
 	<ion-list>
 	  <ion-item>
 	    <ion-label>Source</ion-label>
@@ -17,7 +20,7 @@
 	  <ion-item>
 	    <ion-label>Destination</ion-label>
 	    <ion-select placeholder="Select One" [(ngModel)]="stationsSelected.destination">
-	      <ion-select-option [selected]="stationItem.abbr == prevSelectedDest ? true : false" [value]="stationItem" *ngFor="let stationItem of stations.station">{{ stationItem.name }}</ion-select-option>
+	      <ion-select-option [value]="stationItem" *ngFor="let stationItem of stations.station">{{ stationItem.name }}</ion-select-option>
 	    </ion-select>
 	  </ion-item>
 	  <ion-button color="secondary shade" expand="block" shape="round" [href]="'/trips/' + stationsSelected.source.abbr + '/' + stationsSelected.destination.abbr" routerDirection="forward">
@@ -25,5 +28,6 @@
 		  Find Trains
 	  </ion-button>
 	</ion-list>
-
+	<br/>
+	<p>Unable to select due to a known issue in Ionic 4!</p>
 </ion-content>

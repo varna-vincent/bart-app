@@ -23,16 +23,18 @@ export class HomePage implements OnInit {
 	}
 
 	ngOnInit() {
-	  this.loadStations();
-	  
 	  this.storage.get('prev_selected_source').then((val) => {
-	    console.log('Your age is', val);
+	    console.log('Your prev source is', val);
+	    this.stationsSelected.source.abbr = val;
 	    this.prevSelectedSource = val;
 	  });
-	  this.prevSelectedSource = window.localStorage.getItem( 'prev_selected_source');
-	  this.prevSelectedDest = window.localStorage.getItem( 'prev_selected_dest');
-	  console.log(this.prevSelectedSource);
-	  console.log(this.prevSelectedDest);
+	  this.storage.get('prev_selected_dest').then((val) => {
+	    console.log('Your prev dest is', val);
+	    this.stationsSelected.destination.abbr = val;
+	    this.prevSelectedDest = val;
+	  });
+
+	  this.loadStations();
 	}
 
 	// Get stations list
