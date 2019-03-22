@@ -19,6 +19,31 @@
 		<p>North Routes - <span *ngFor="let northRoute of station.north_routes.route" class="pr-2"> {{ northRoute }} </span></p>
 		<p>South Platforms - <span *ngFor="let southPlatform of station.south_platforms.platform" class="pr-2"> {{ southPlatform }} </span></p>
 		<p>South Routes - <span *ngFor="let southRoute of station.south_routes.route" class="pr-2"> {{ southRoute }} </span></p>
+		<div class="d-flex flex-row justify-content-center">
+			<h6 class="text-dark text-left float-left"> Next train leaves in </h6>
+			<ion-label padding id="hour-countdown" class="countdown text-dark">
+			  <div id="hour-countdown-number"></div>
+			  <svg>
+			    <circle r="18" cx="20" cy="20"></circle>
+			  </svg>
+		  	  <ion-text>hr</ion-text>
+			</ion-label>
+			<ion-label padding id="min-countdown" class="countdown text-dark">
+			  <div id="min-countdown-number"></div>
+			  <svg>
+			    <circle r="18" cx="20" cy="20"></circle>
+			  </svg>
+		  	  <ion-text>m</ion-text>
+			</ion-label>
+			<ion-label padding id="sec-countdown" class="countdown text-dark">
+			  <div id="sec-countdown-number"></div>
+			  <svg>
+			    <circle r="18" cx="20" cy="20"></circle>
+			  </svg>
+		  	  <ion-text>s</ion-text>
+			</ion-label>
+		</div>
+
 		<p> Directions </p>
 	  </ion-card-content>
 	</ion-card>

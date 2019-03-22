@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TripsService } from './trips.service';
 import { HomeService } from './../home/home.service';
 import { Storage } from '@ionic/storage';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-trips',
@@ -23,6 +24,10 @@ export class TripsPage implements OnInit {
 
   public origin: any = { lat: 37.765062, lng: -122.419694 };
   public destination: any = { lat: 37.803768, lng: -122.271450 };
+
+  public hourInterval: any;
+  public minInterval: any;
+  public secInterval: any;
 
   constructor(private activatedRoute: ActivatedRoute, private tripsService: TripsService, private homeService: HomeService, private storage: Storage) { }
 
@@ -53,7 +58,7 @@ export class TripsPage implements OnInit {
     if(this.source && this.source && this.dest && this.dest && this.source !== this.dest) {
       return this.tripsService.getTrips(this.source, this.dest).subscribe((data: {}) => {
         this.schedule = data;
-        // this.countdownService.initiateTimer(this.schedule.request.trip[0]['@origTimeMin']);
+        this.initiateTimer(this.schedule.request.trip[0]['@origTimeMin']);
         this.getDirection();
       })
     }
@@ -82,5 +87,44 @@ export class TripsPage implements OnInit {
     this.origin = { lat: parseFloat(this.station.gtfs_latitude), lng: parseFloat(this.station.gtfs_longitude) };
     this.destination = { lat: parseFloat(this.destn.gtfs_latitude), lng: parseFloat(this.destn.gtfs_longitude) };
     console.log(this.destination);
+  }
+
+  initiateTimer(trainArrivalTime) {
+
+    clearInterval(this.hourInterval);
+    clearInterval(this.minInterval);
+    clearInterval(this.secInterval);
+
+    trainArrivalTime = moment(trainArrivalTime, "hh:mm a");
+    let now = moment.now();
+    let duration = moment.duration(trainArrivalTime.diff(now));
+    console.log(duration);
+
+    let hourCountdownNumberEl = document.getElementById('hour-countdown-number');
+    let hourCountdown = duration.get('hour');
+    hourCountdownNumberEl.textContent = hourCountdown.toString();
+
+    let minCountdownNumberEl = document.getElementById('min-countdown-number');
+    let minCountdown = duration.get('minute');
+    minCountdownNumberEl.textContent = minCountdown.toString();
+
+    let secCountdownNumberEl = document.getElementById('sec-countdown-number');
+    let secCountdown = duration.get('second');
+    secCountdownNumberEl.textContent = secCountdown.toString();
+
+    this.hourInterval = setInterval(function() {
+      hourCountdown = --hourCountdown <= 0 ? 0 : hourCountdown;
+      hourCountdownNumberEl.textContent = hourCountdown.toString();
+    }, 3600000);
+
+    this.minInterval = setInterval(function() {
+      minCountdown = --minCountdown <= 0 ? 0 : minCountdown;
+      minCountdownNumberEl.textContent = minCountdown.toString();
+    }, 60000);
+
+    this.secInterval = setInterval(function() {
+      secCountdown = --secCountdown <= 0 ? 60 : secCountdown;
+      secCountdownNumberEl.textContent = secCountdown.toString();
+    }, 1000);
   }
 }
