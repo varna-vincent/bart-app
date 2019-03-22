@@ -7,20 +7,17 @@
 	<ion-card>
 	  <ion-card-header>
 	    <ion-card-title>Bart Trains</ion-card-title>
-	    <ion-card-subtitle>From: {{ station.name }}</ion-card-subtitle>
-	    <ion-card-subtitle>To:  {{ dest }}</ion-card-subtitle>
+	    <ion-card-subtitle>From {{ station.name }} to {{ destn.name }}</ion-card-subtitle>
 	  </ion-card-header>
 
 	  <ion-card-content *ngIf="station.north_platforms != null">
 	  	<p>Name - {{ station.name }}</p>
-		<p>Abbreviation - {{ station.abbr }}</p>
 		<p class="text-justify">Address - <span>{{ station.address }}, {{ station.city }}, {{ station.county }}, {{ station.state }}, {{ station.zipcode }}</span></p>
-		<p>North Platforms - <span *ngFor="let northPlatform of station.north_platforms.platform" class="pr-2"> {{ northPlatform }} </span></p>
+		<p>North Platforms - <span *ngFor="let northPlatform of station.north_platforms.platform" class="pr-2"> {{ northPlatform }} </span>, South Platforms - <span *ngFor="let southPlatform of station.south_platforms.platform" class="pr-2"> {{ southPlatform }} </span></p>
 		<p>North Routes - <span *ngFor="let northRoute of station.north_routes.route" class="pr-2"> {{ northRoute }} </span></p>
-		<p>South Platforms - <span *ngFor="let southPlatform of station.south_platforms.platform" class="pr-2"> {{ southPlatform }} </span></p>
 		<p>South Routes - <span *ngFor="let southRoute of station.south_routes.route" class="pr-2"> {{ southRoute }} </span></p>
 		<div class="d-flex flex-row justify-content-center">
-			<h6 class="text-dark text-left float-left"> Next train leaves in </h6>
+			<p class="text-dark text-left float-left"> Next train leaves in - 
 			<ion-label padding id="hour-countdown" class="countdown text-dark">
 			  <div id="hour-countdown-number"></div>
 			  <svg>
@@ -42,6 +39,7 @@
 			  </svg>
 		  	  <ion-text>s</ion-text>
 			</ion-label>
+			</p>
 		</div>
 
 		<p> Directions </p>
