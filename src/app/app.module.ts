@@ -8,6 +8,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';            
+import { AgmDirectionModule } from 'agm-direction';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { Configuration } from './app.constants';
@@ -16,9 +19,14 @@ import { Configuration } from './app.constants';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
-    IonicStorageModule.forRoot()],
+    IonicStorageModule.forRoot(),
+    AgmCoreModule.forRoot({ 
+      apiKey: 'AIzaSyD3u4KtwEugomr45KkWV4px6d9Qqlc2240',
+    }),
+    AgmDirectionModule],
   providers: [
-  	Configuration,
+  	Configuration, 
+    GoogleMapsAPIWrapper,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

@@ -42,6 +42,9 @@
 			</p>
 		</div>
 		<p> Directions </p>
+		<agm-map [latitude]="lat" [longitude]="lng">
+		  <agm-direction [origin]="origin" [destination]="destination"></agm-direction>
+		</agm-map>
 	  </ion-card-content>
 	</ion-card>
 	<ion-content *ngIf="schedule != null && schedule.request != null" >

@@ -27,6 +27,7 @@
     "@ionic/angular": "^4.1.0",
     "@ionic/storage": "^2.2.0",
     "@types/google-maps": "^3.2.0",
+    "agm-core": "^1.0.0-beta.5",
     "agm-direction": "^0.7.6",
     "cordova-android": "7.1.4",
     "cordova-plugin-device": "^2.0.2",

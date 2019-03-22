@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Configuration } from './../app.constants';
+import { AgmCoreModule } from '@agm/core';
 
 @Injectable({
   providedIn: 'root'

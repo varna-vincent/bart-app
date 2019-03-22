@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TripsService } from './trips.service';
 import { HomeService } from './../home/home.service';
 import { Storage } from '@ionic/storage';
+import { AgmCoreModule } from '@agm/core';
 import * as moment from 'moment';
 
 @Component({
